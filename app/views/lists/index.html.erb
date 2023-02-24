@@ -8,8 +8,10 @@
 
 <div class="cards">
   <% @lists.each do |list| %>
-    <div class="card-category" style="background-color: black">
-      <p class="my-3"><%= link_to "#{list.name}", list_path(list), id: "list-link" %></p>
-    </div>
+    <% if list.photo.attached? %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+        <p class="my-3"><%= link_to "#{list.name}", list_path(list), id: "list-link" %></p>
+      </div>
+    <% end %>
   <% end %>
 </div>
