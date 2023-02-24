@@ -1,0 +1,19 @@
+<%= render "navbar", list: @list %>
+<%= render "show-banner", list: @list %>
+
+<div class="movie-button">
+<button type="button" class="btn btn-flat m-3"><%= link_to "Add a movie", new_list_bookmark_path(@list), class: "link" %></button>
+</div>
+
+<div class="cards">
+  <% @bookmarks.each do |bookmark| %>
+    <div class="card-movie">
+      <img src="<%= bookmark.movie.poster_url %>" />
+      <div class="card-movie-infos">
+        <h2><%= bookmark.movie.title %></h2>
+        <p><%= bookmark.movie.overview %></p>
+        <%= link_to "Supprimer", list_bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "link" %>
+      </div>
+    </div>
+  <% end %>
+</div>

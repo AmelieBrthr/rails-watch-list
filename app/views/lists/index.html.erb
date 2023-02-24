@@ -1,0 +1,15 @@
+<%= render "navbar", list: @list %>
+<%= render "banner", list: @list %>
+
+<div class="summary">
+  <h3>Mes listes de film</h1>
+  <button type="button" class="btn btn-flat"><%= link_to "Add a new list", new_list_path, class: "link" %></button>
+</div>
+
+<div class="cards">
+  <% @lists.each do |list| %>
+    <div class="card-category" style="background-color: black">
+      <p class="my-3"><%= link_to "#{list.name}", list_path(list), id: "list-link" %></p>
+    </div>
+  <% end %>
+</div>
